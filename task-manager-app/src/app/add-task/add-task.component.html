@@ -1,0 +1,68 @@
+<nav-bar></nav-bar>
+<br/>
+<div class="container-fluid">
+    <h3 style="padding-left: 10px;">Add Task</h3>
+    <form *ngIf="addTaskForm" [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
+        <table border="0" cellspacing="0" cellpadding="10" style="width: 60%">
+            <tr class="form-group">
+                <td width="20%">
+                    <label>Task</label>
+                </td>
+                <td width="10%"></td>
+                <td width="70%">
+                    <input type="text" class="form-control" id="taskName" formControlName="taskName" placeholder="Task Name" autofocus/>
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td width="20%">
+                    <label>Priority</label>
+                </td>
+                <td width="10%"></td>
+                <td width="70%">
+                    <input type="range" class="form-control slider" min="0" max="30" id="priority" formControlName="priority" [(ngModel)]="rangeValue" title="{{rangeValue}}" />
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td width="20%">
+                    <label>Parent Task</label>
+                </td>
+                <td width="10%"></td>
+                <td width="70%">
+                    <div formGroupName="parentTask" novalidate>
+                        <input type="text" class="form-control" id="parentTaskName" formControlName="parentTaskName" placeholder="Parent Task Name"/>
+                    </div>
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td width="20%">
+                    <label>Start Date</label>
+                </td>
+                <td width="10%"></td>
+                <td width="70%">
+                    <input type="date" class="form-control" id="startDate" formControlName="startDate"/>
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td width="20%">
+                    <label>End Date</label>
+                </td>
+                <td width="10%"></td>
+                <td width="70%">
+                    <input type="date" class="form-control" id="endDate" formControlName="endDate"/>
+                </td>
+            </tr>            
+        </table>
+        <br>
+        <table border="0" cellspacing="0" cellpading="0">
+            <tr>
+                <td width="45%">
+                    <button type="submit" class="btn btn-success" [disabled]="!addTaskForm.valid" style="width: 100px; cursor: pointer;">Add Task</button>
+                </td>
+                <td width="10%"></td>
+                <td width="45%">
+                    <button type="button" class="btn btn-primary" (click)="reset()" style="width: 100px; cursor: pointer;">Reset</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
